@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV-iTech Electrical Solutions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Vendosni foton që dëshironi si background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+        header {
+            background-color: rgba(0, 115, 230, 0.8);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            height: 300px; /* Reduced size for mobile */
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #005bb5;
+            padding: 0.5rem 0;
+            flex-wrap: wrap; /* Allows menu to wrap on smaller screens */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 100%;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .services, .about {
+            margin-bottom: 2rem;
+        }
+        .services h2, .about h2 {
+            color: #0073e6;
+        }
+        .services ul {
+            list-style: none;
+            padding: 0;
+        }
+        .services li {
+            background: #e6f7ff;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-left: 4px solid #0073e6;
+        }
+        
+        /* Gallery Slider Styles */
+        .gallery {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            width: 200px; /* Reduced image size for mobile */
+            height: auto;
+            display: block;
+            object-fit: cover;
+            margin: 0 10px;
+        }
+        button {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            transform: translateY(-50%);
+        }
+        button.prev {
+            left: 10px;
+        }
+        button.next {
+            right: 10px;
+        }
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Language Option (Positioned at the top right) */
+        .language-option {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background-color: #005bb5;
+            padding: 10px;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            header img {
+                height: 80px; /* Smaller logo on smaller screens */
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            nav a {
+                font-size: 0.9rem;
+                margin: 0.5rem;
+            }
+            .services li, .about p {
+                font-size: 0.9rem;
+            }
+            .slide {
+                width: 150px; /* Further reduce image size on mobile */
+            }
+            .language-option {
+                font-size: 14px;
+            }
+            button {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+            nav a {
+                font-size: 0.8rem;
+                margin: 0.3rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="AV-iTech Logo">
+        <h1 data-en="Welcome to AV-iTech Electrical Solutions" data-sq="Mirësevini në AV-iTech Innovative Technology">Welcome to AV-iTech Electrical Solutions</h1>
+        <p data-en="Your trusted partner for all electrical needs" data-sq="Partneri juaj i besuar për të gjitha nevojat elektrike">Your trusted partner for all electrical needs</p>
+    </header>
+    <nav>
+        <a href="#services" data-en="Services" data-sq="Shërbimet">Services</a>
+        <a href="#gallery" data-en="Gallery" data-sq="Galeria">Gallery</a>
+        <a href="#about" data-en="About Us" data-sq="Rreth Nesh">About Us</a>
+        <a href="#contact" data-en="Contact" data-sq="Kontakti">Contact</a>
+    </nav>
+
+    <!-- Language Option Button -->
+    <div class="language-option" id="language-option">
+        Language: <span id="current-language">English</span>
+    </div>
+
+    <div class="container">
+        <section id="services" class="services">
+            <h2 data-en="Our Services" data-sq="Shërbimet tona">Our Services</h2>
+            <ul>
+                <li data-en="Electrical design and installations for residential and industrial buildings" data-sq="Projektime dhe instalime elektrike civile dhe industriale">Electrical design and installations for residential and industrial buildings</li>
+                <li data-en="Security cameras and intercom systems" data-sq="Kamera sigurie dhe sisteme videocitofonie">Security cameras and intercom systems</li>
+                <li data-en="Smart lock systems" data-sq="Sisteme bravash ">Smart lock systems</li>
+                <li data-en="Maintenance and repairs" data-sq="Mirëmbajtje dhe riparime">Maintenance and repairs</li>
+            </ul>
+        </section>
+        <section id="gallery" class="gallery">
+            <h2 data-en="Gallery" data-sq="Galeria">Gallery</h2>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="photo1.jpg" alt="Project 1" class="slide">
+                    <img src="photo2.jpg" alt="Project 2" class="slide">
+                    <img src="photo3.jpg" alt="Project 3" class="slide">
+                    <img src="photo4.jpg" alt="Project 4" class="slide">
+                    <img src="photo5.jpg" alt="Project 5" class="slide">
+                    <img src="photo6.jpg" alt="Project 6" class="slide">
+                    <img src="photo7.jpg" alt="Project 7" class="slide">
+                    <img src="photo8.jpg" alt="Project 8" class="slide">
+                    <img src="photo9.jpg" alt="Project 9" class="slide">
+                    <img src="photo10.jpg" alt="Project 10" class="slide">
+                    <img src="photo11.jpg" alt="Project 11" class="slide">
+                    <img src="photo12.jpg" alt="Project 12" class="slide">
+                    <img src="photo13.jpg" alt="Project 13" class="slide">
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h2>About Us</h2>
+            <p><strong>AV-iTech Innovative Technology</strong>, we are a leading provider of high-quality electrical services for residential and commercial clients. With over 15 years of experience, we specialize in designing and installing electrical systems that ensure safety, efficiency, and reliability.</p>
+            <p>Our team of trained and certified electricians is committed to delivering outstanding services, using the latest technologies and techniques in the industry. Whether you need a new installation, system upgrade, or maintenance and repairs, we handle every project with professionalism and attention to detail.</p>
+            <p>We are proud of our ability to tackle complex electrical challenges, from residential installations to large-scale industrial projects. Our solutions are customized to meet the specific needs of each client, ensuring every job is completed on time and within budget.</p>
+            <p>At AV-iTech, we value customer satisfaction above all else and are dedicated to providing fast and reliable service that exceeds your expectations. Trust us to be your partner for all your electrical needs.</p>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <p>Email: av.itech25@gmail.com</p>
+            <p>Phone: +355 692365891</p>
+            <p>Phone: +355 697992993</p>
+            <p>Address: Shkoder</p>
+            <p>Instagram: <a href="https://www.instagram.com/av.itech?igsh=MTU1ZTh0ajhzZXV1aA==" target="_blank">@av.itech</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AV-iTech Electrical Solutions. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalSlides - 1;
+            } else if (currentIndex >= totalSlides) {
+                currentIndex = 0;
+            }
+
+            const slider = document.querySelector('.slider');
+            slider.style.transform = `translateX(-${currentIndex * (320)}px)`; /* Adjusted for smaller images */
+        }
+
+        // Function to change the language
+        document.getElementById('language-option').addEventListener('click', function() {
+            const currentLanguage = document.getElementById('current-language').innerText;
+            
+            if (currentLanguage === 'English') {
+                document.getElementById('current-language').innerText = 'Albanian';
+                translateContent('sq');
+            } else {
+                document.getElementById('current-language').innerText = 'English';
+                translateContent('en');
+            }
+        });
+
+        // Function to change content language
+        function translateContent(language) {
+            const elements = document.querySelectorAll('[data-en], [data-sq]');
+            elements.forEach(element => {
+                if (language === 'sq') {
+                    element.innerText = element.getAttribute('data-sq');
+                } else {
+                    element.innerText = element.getAttribute('data-en');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
